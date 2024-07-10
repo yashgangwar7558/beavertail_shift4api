@@ -35,6 +35,7 @@ exports.getTickets = async (req, res) => {
         const result = await makeApiRequest(url, headers)
 
         res.status(200).json({ success: true, tickets: result })
+        // return result
     } catch (err) {
         console.error('Error getting tickets from POS:', err.message);
         res.status(500).json({ success: false, message: 'Internal Server Error' })

@@ -4,6 +4,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const posRouter = require('./routers/pos') 
 const marketplaceRouter = require('./routers/marketplace') 
+const { fetchTicketsForMissedDuration, fetchTicketsHourly } = require('./controllers/fetchLiveTickets')
 
 const app = express()
 const port = process.env.PORT
@@ -22,5 +23,10 @@ app.get('/', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is live at port no. ${port}`);
+    // const locationId = '6740'
+    // fetchTicketsForMissedDuration(locationId).then(() => {
+    //     setInterval(fetchTicketsHourly, 60 * 60 * 1000);
+    //     fetchTicketsHourly(locationId);
+    // });
 })
 
