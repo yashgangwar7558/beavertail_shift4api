@@ -13,10 +13,8 @@ exports.getNewTickets = async (req, res) => {
     }
 }
 
-exports.getTickets = async (req, res) => {
+exports.getTickets = async (locationId, fromDate, toDate) => {
     try {
-        const { locationId, fromDate, toDate } = req.body
-
         const requestMethod = 'GET';
         const requestPath = `/pos/v2/${locationId}/tickets`
         const postData = {}
@@ -33,12 +31,9 @@ exports.getTickets = async (req, res) => {
         }
 
         const result = await makeApiRequest(url, headers)
-
-        res.status(200).json({ success: true, tickets: result })
-        // return result
+        return result
     } catch (err) {
         console.error('Error getting tickets from POS:', err.message);
-        res.status(500).json({ success: false, message: 'Internal Server Error' })
     }
 }
 
