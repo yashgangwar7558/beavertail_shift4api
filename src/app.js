@@ -49,7 +49,7 @@ connectToMongoDB()
                 const tenants = await fetchAllPosTenants(posId);
                 tenants.forEach(({ tenantId, posId, identifier, lastSynced }) => {
                     fetchTicketsForMissedDuration(tenantId, posId, identifier, lastSynced).then(() => {
-                        setInterval(() => fetchTicketsHourly(tenantId, posId, identifier), 3600000);
+                        setInterval(() => fetchTicketsHourly(tenantId, posId, identifier), 30000); // 3600000
                         fetchTicketsHourly(tenantId, posId, identifier);
                     });
                 });

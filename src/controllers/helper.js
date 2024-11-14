@@ -49,7 +49,6 @@ exports.processBill = async (billData) => {
     try {
         const response = await axios.post(`${process.env.BEAVERTAIL_HOST}/process-bill`, billData); 
         console.log('Bill processed:', response.data);
-        // console.log('Bill processed');
     } catch (error) {
         console.error('Error processing bill:', error.message);
     }
@@ -79,7 +78,6 @@ exports.updateLastSynced = async (tenantId, posId, currentTime) => {
     try {
         const data = {tenantId, posId, lastSynced: currentTime}
         const response = await axios.post(`${process.env.BEAVERTAIL_HOST}/update-lastSynced`, data); 
-        // console.log('Updated last fetched time:', response.data.lastSynced);
     } catch (error) {
         console.error('Error updating last synced time:', error.message);
     }
